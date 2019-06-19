@@ -1,3 +1,9 @@
+## Project under construction :construction:
+
+This project are curently (2019/06/18) under construction.
+
+---
+
 # EzoDeviceLib
 UWP Library for Atlas Scientific EZO devices
 Open source UWP library for communication with Atlas Scientific EZO devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.
