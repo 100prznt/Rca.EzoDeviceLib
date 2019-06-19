@@ -38,6 +38,11 @@ namespace Rca.EzoDeviceLib
 
         #region Properties
         /// <summary>
+        /// I2C bus speed
+        /// </summary>
+        public I2cBusSpeed BusSpeed { get; set; }
+
+        /// <summary>
         /// LED control
         /// </summary>
         public bool LedState
@@ -224,7 +229,7 @@ namespace Rca.EzoDeviceLib
 
         private async Task InitSensor(int slaveAddress)
         {
-            var settings = new I2cConnectionSettings(slaveAddress); //also supported { BusSpeed = I2cBusSpeed.FastMode };
+            var settings = new I2cConnectionSettings(slaveAddress) { BusSpeed = BusSpeed };
 
             string aqs = I2cDevice.GetDeviceSelector();
             var dis = await DeviceInformation.FindAllAsync(aqs);
