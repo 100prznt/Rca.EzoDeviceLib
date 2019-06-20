@@ -5,7 +5,8 @@ This project are curently (2019/06/18) under construction.
 ---
 
 # EzoDeviceLib
-UWP Library for Atlas Scientific EZO devices
+UWP Library for Atlas Scientific EZO devices.
+
 Open source UWP library for communication with Atlas Scientific EZO devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.
 
 This library targets __UWP IoT projects__! Download directly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
@@ -33,7 +34,7 @@ var myEzoPhSensor = new PhSensor(0x1A)
 ```
 
 	
-### Perform an read measurement
+### Perform and read measurement
 	
 ```cs
 double ph = myEzoPhSensor.GetMeasValue();
