@@ -54,8 +54,7 @@ double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 ## How To install?
 Download the source from GitHub or get the compiled assembly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
 
-[![NuGet](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib)  
-[![NuGet](https://img.shields.io/nuget/dt/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)
+[![Current version](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg?logo=nuget&style=popout-square)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)   [![NuGet](https://img.shields.io/nuget/dt/Rca.EzoDeviceLib.svg?logo=nuget&style=popout-square)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)
 
 ## Credits
 This library is made possible by contributions from:
