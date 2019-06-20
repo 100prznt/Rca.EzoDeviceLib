@@ -6,13 +6,13 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/100prznt/Rca.EzoDeviceLib/blob/master/LICENSE.txt</license>
+    <licenseUrl>https://github.com/100prznt/Rca.EzoDeviceLib/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/100prznt/Rca.EzoDeviceLib/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>For more informations visit: https://github.com/100prznt/Rca.EzoDeviceLib/releases</releaseNotes>
+    <releaseNotes>For more informations visit: https://github.com/100prznt/Rca.EzoDeviceLib</releaseNotes>
     <copyright>Copyright © RC-Art Solutions 2019</copyright>
-    <tags>sensor uwp iot water-analysis atlas-scientific ph redox orp temperature pressure-sensor</tags>
+    <tags>uwp iot water-analysis atlas-scientific ph redox orp temperature pressure temperature-sensor pressure-sensor</tags>
   </metadata>
   <files>
     <file src="Rca.EzoDeviceLib\bin\ARM\Release\Rca.EzoDeviceLib.dll" target="runtimes\win10-arm\native" />
