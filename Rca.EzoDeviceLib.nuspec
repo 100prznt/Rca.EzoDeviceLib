@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Rca.EzoDeviceLib</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/100prznt/EzoDeviceLib/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/100prznt/EzoDeviceLib/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>For more informations visit: https://github.com/100prznt/EzoDeviceLib/releases</releaseNotes>
+    <copyright>Copyright © RC-Art Solutions 2019</copyright>
+    <tags>sensor uwp iot water-analysis atlas-scientific ph redox orp temperature pressure-sensor</tags>
+  </metadata>
+  <files>
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.dll" target="lib\uap10.0" />
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.xml" target="lib\uap10.0" />
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.pdb" target="lib\uap10.0" />
+
+    <file src="**\*.cs" target="src" />
+  </files>
+</package>
