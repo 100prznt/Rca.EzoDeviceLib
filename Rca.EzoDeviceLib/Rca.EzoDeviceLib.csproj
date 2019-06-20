@@ -134,7 +134,7 @@
     <Compile Include="Objects\RestartReasonCodeAttribute.cs" />
     <Compile Include="Objects\RestartReasonExtensions.cs" />
     <Compile Include="Specific\Ph\Slope.cs" />
-    <EmbeddedResource Include="Properties\EzoSensors.rd.xml" />
+    <EmbeddedResource Include="Properties\Rca.EzoDeviceLib.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">

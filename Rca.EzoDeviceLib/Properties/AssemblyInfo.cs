@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("UWP Library for Atlas Scientific EZO Devices")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RC-Art Solutions")]
-[assembly: AssemblyProduct("EzoDeviceLib")]
+[assembly: AssemblyProduct("Rca.EzoDeviceLib")]
 [assembly: AssemblyCopyright("Copyright © RC-Art Solutions 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
