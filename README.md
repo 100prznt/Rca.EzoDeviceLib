@@ -14,6 +14,8 @@ This library targets __UWP IoT projects__! Download directly from NuGet [Rca.Ezo
 * Support for EZO devices
 
 
+[![Bulid](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg?logo=appveyor&style=popout-square)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)   [![Current version](https://img.shields.io/endpoint.svg?color=ff2e64&logo=appveyor&style=popout-square&url=https%3A%2F%2Fio.100prznt.de%2Fbadge.json)](https://io.100prznt.de/)   [![Code size](https://img.shields.io/github/languages/code-size/100prznt/rca-ezodevicelib.svg?logo=github&style=popout-square)](#) 
+
 ## How to use?
 Some basic usage examples
 
@@ -53,12 +55,6 @@ Download the source from GitHub or get the compiled assembly from NuGet [Rca.Ezo
 
 [![NuGet](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib)  
 [![NuGet](https://img.shields.io/nuget/dt/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)
-
-## Releases
-This project build on the continuous integration (CI) platform [AppVeyor](https://www.appveyor.com/) and released in the [Release-Feed](https://github.com/rmmlr/Rca.EzoDeviceLib/releases).
-
-[![AppVeyor Build](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)  
-[![AppVeyor Tests](https://img.shields.io/appveyor/tests/100prznt/rca-ezodevicelib/master.svg)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib/build/tests)
 
 ## Credits
 This library is made possible by contributions from:
