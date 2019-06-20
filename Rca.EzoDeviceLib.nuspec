@@ -18,7 +18,7 @@
     <file src="Rca.EzoDeviceLib\bin\ARM\Release\Rca.EzoDeviceLib.dll" target="runtimes\win10-arm\native" />
     <file src="Rca.EzoDeviceLib\bin\ARM\Release\Rca.EzoDeviceLib.xml" target="runtimes\win10-arm\native" />
     <file src="Rca.EzoDeviceLib\bin\ARM\Release\Rca.EzoDeviceLib.pdb" target="runtimes\win10-arm\native" />
-    <file src="LICENSE.txt" target="" />
+    <file src="..\..\..\..\LICENSE.txt" target="" />
     <file src="**\*.cs" target="src" />
   </files>
 </package>
