@@ -6,7 +6,7 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://github.com/100prznt/Rca.EzoDeviceLib/blob/master/LICENSE.txt</license>
     <projectUrl>https://github.com/100prznt/Rca.EzoDeviceLib/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
