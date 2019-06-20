@@ -15,9 +15,9 @@
     <tags>sensor uwp iot water-analysis atlas-scientific ph redox orp temperature pressure-sensor</tags>
   </metadata>
   <files>
-    <file src="EzoDeviceLib\bin\ARM\Release\EzoDeviceLib.dll" target="lib\uap10.0" />
-    <file src="EzoDeviceLib\bin\ARM\Release\EzoDeviceLib.xml" target="lib\uap10.0" />
-    <file src="EzoDeviceLib\bin\ARM\Release\EzoDeviceLib.pdb" target="lib\uap10.0" />
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.dll" target="runtimes\win10-x86\native" />
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.xml" target="runtimes\win10-x86\native" />
+    <file src="EzoDeviceLib\bin\Release\EzoDeviceLib.pdb" target="runtimes\win10-x86\native" />
 
     <file src="**\*.cs" target="src" />
   </files>
