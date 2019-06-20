@@ -51,13 +51,22 @@ double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 ## How To install?
 Download the source from GitHub or get the compiled assembly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
 
+[![NuGet](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib)  
+[![NuGet](https://img.shields.io/nuget/dt/Rca.EzoDeviceLib.svg)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)
+
+## Releases
+This project build on the continuous integration (CI) platform [AppVeyor](https://www.appveyor.com/) and released in the [Release-Feed](https://github.com/rmmlr/Rca.EzoDeviceLib/releases).
+
+[![AppVeyor Build](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)  
+[![AppVeyor Tests](https://img.shields.io/appveyor/tests/100prznt/rca-ezodevicelib/master.svg)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib/build/tests)
+
 ## Credits
 This library is made possible by contributions from:
 * [Elias Rümmler](http://www.100prznt.de) ([@rmmlr](https://github.com/rmmlr)) - core contributor
 
 ## License
 
-Rca.EzoDeviceLib is licensed under [MIT](http://www.opensource.org/licenses/mit-license.php "Read more about the MIT license form"). Refer to [license.txt](https://github.com/100prznt/EzoDeviceLib/blob/master/LICENSE) for more information.
+Rca.EzoDeviceLib is licensed under [MIT](http://www.opensource.org/licenses/mit-license.php "Read more about the MIT license form"). Refer to [LICENSE.txt](https://github.com/100prznt/EzoDeviceLib/blob/master/LICENSE.txt) for more information.
 
 ## Contributions
 
