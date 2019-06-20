@@ -1,8 +1,15 @@
+## Project under construction :construction:
+
+This project are curently (2019/06/18) under construction.
+
+---
+
 # EzoDeviceLib
-UWP Library for Atlas Scientific EZO devices
+UWP Library for Atlas Scientific EZO devices.
+
 Open source UWP library for communication with Atlas Scientific EZO devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.
 
-This library targets `UWP IoT projects`! Download directly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
+This library targets __UWP IoT projects__! Download directly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
 
 * Support for EZO devices
 
@@ -14,30 +21,30 @@ Some basic usage examples
 In this example is the I2C address of conneted EZO device set to default (0x63 for EZO pH Circuit):
 
 ```cs
-	var myEzoPhSensor = new PhSensor();
+var myEzoPhSensor = new PhSensor();
 ```
 
 Or create an instance with custom parameters:
 
 ```cs
-	var myEzoPhSensor = new PhSensor(0x1A)
-    {
-        BusSpeed = I2cBusSpeed.FastMode //default is StandardMode
-    };
+var myEzoPhSensor = new PhSensor(0x1A)
+{
+	BusSpeed = I2cBusSpeed.FastMode //default is StandardMode
+};
 ```
 
 	
-### Perform an read measurement
+### Perform and read measurement
 	
 ```cs
-	double ph = myEzoPhSensor.GetMeasValue();
+double ph = myEzoPhSensor.GetMeasValue();
 ```
 
 With tempreature compensation:
 
 ```cs
-	double temperature = 23.5; //temperature in °C
-	double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
+double temperature = 23.5; //temperature in °C
+double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 ```
 
 
