@@ -9,7 +9,7 @@
     <licenseUrl>https://github.com/100prznt/Rca.EzoDeviceLib/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/100prznt/Rca.EzoDeviceLib/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Open source UWP library for communication with Atlas Scientific EZO devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.</description>
     <releaseNotes>For more informations visit: https://github.com/100prznt/Rca.EzoDeviceLib</releaseNotes>
     <copyright>Copyright © RC-Art Solutions 2019</copyright>
     <tags>uwp iot water-analysis atlas-scientific ph redox orp temperature pressure temperature-sensor pressure-sensor</tags>
