@@ -6,6 +6,7 @@
 
 ---
 
+![EZO Devices on the Whitebox carrier](docu/img/ezo-on-whitebox-carrier.jpg "Atlas Scientific EZO™ devices (pH and ORP) on the Whitebox carrier.")
 # EzoDeviceLib
 Open source UWP library for communication with Atlas Scientific EZO™ devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.
 
@@ -17,8 +18,6 @@ This library targets __UWP IoT projects__! Download directly from NuGet [Rca.Ezo
 
 [![Bulid](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg?logo=appveyor&style=popout-square)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)   [![Current version](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg?logo=nuget&logoColor=%23ef8b00&style=popout-square)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)   [![Code size](https://img.shields.io/github/languages/code-size/100prznt/Rca.EzoDeviceLib.svg?logo=github&style=popout-square)](#) 
 
-
-![EZO Devices on the Whitebox carrier](docu/img/ezo-on-whitebox-carrier.jpg "Atlas Scientific EZO™ devices (pH and ORP) on the Whitebox carrier.")
 
 ## How to use?
 Some basic usage examples
