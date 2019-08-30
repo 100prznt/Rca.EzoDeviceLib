@@ -1,5 +1,8 @@
 ## Project under construction :construction:
-This project are curently (2019/06/20) under construction.
+```diff
+! This project is currently  (2019/08/30) under construction.
+! Currently only the pH and the ORP EZO™ device are supported.
+```
 
 ---
 
@@ -8,7 +11,8 @@ Open source UWP library for communication with Atlas Scientific EZO™ devices. 
 
 This library targets __UWP IoT projects__! Download directly from NuGet [Rca.EzoDeviceLib on NuGet](https://nuget.org/packages/Rca.EzoDeviceLib).
 
-* Support for EZO devices
+* Support for EZO™ pH device
+* Support for EZO™ ORP device
 
 
 [![Bulid](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg?logo=appveyor&style=popout-square)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)   [![Current version](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg?logo=nuget&logoColor=%23ef8b00&style=popout-square)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)   [![Code size](https://img.shields.io/github/languages/code-size/100prznt/Rca.EzoDeviceLib.svg?logo=github&style=popout-square)](#) 
