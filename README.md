@@ -1,7 +1,7 @@
 ## Project under construction :construction:
 ```diff
-! This project is currently  (2019/08/30) under construction.
-! Currently only the pH and the ORP EZO™ device are supported.
+! This project is currently  (2019/09/16) under construction.
+! Currently only the pH and the ORP EZO™ device are supported, RTD is in progress.
 ```
 
 ---
