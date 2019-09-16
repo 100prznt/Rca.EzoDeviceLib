@@ -11,7 +11,7 @@ using Rca.EzoDeviceLib.Specific.Ph;
 namespace Rca.EzoDeviceLib
 {
     /// <summary>
-    /// Represents a ORP sensor connected to an Atlas Scientific EZO™ ORP circuit.
+    /// Represents a ORP probe connected to an Atlas Scientific EZO™ ORP circuit.
     /// ORP stands for oxidation/reduction potential.
     /// https://www.atlas-scientific.com/_files/_datasheets/_circuit/ORP_EZO_datasheet.pdf
     /// </summary>
