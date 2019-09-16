@@ -14,7 +14,7 @@ namespace Rca.EzoDeviceLib
     /// Represents a pH sensor connected to an Atlas Scientific EZO™ pH Circuit.
     /// https://www.atlas-scientific.com/product_pages/circuits/ezo_ph.html
     /// </summary>
-    public class PhSensor : BaseDevice
+    public class EzoPh : EzoBase
     {
         #region Constants
         private const int DEFAULT_ADDRESS = 0x63; //pH EZO
@@ -38,7 +38,7 @@ namespace Rca.EzoDeviceLib
         /// Constructing this object will initialize it.
         /// </summary>
         /// <param name="slaveAddress">I2C slave address of EZO device</param>
-        public PhSensor(byte slaveAddress = DEFAULT_ADDRESS) : base(slaveAddress)
+        public EzoPh(byte slaveAddress = DEFAULT_ADDRESS) : base(slaveAddress)
         {
 
         }

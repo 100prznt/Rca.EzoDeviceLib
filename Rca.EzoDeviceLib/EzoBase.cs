@@ -12,10 +12,10 @@ using Windows.Devices.I2c;
 namespace Rca.EzoDeviceLib
 {
     /// <summary>
-    /// Base class for EZO devices.
+    /// Base class for EZO™ devices.
     /// Contains base functionality and services.
     /// </summary>
-    public abstract class BaseDevice : IDisposable
+    public abstract class EzoBase : IDisposable
     {
         #region Constants
         protected const int PROCESSING_DELAY = 300;
@@ -68,7 +68,7 @@ namespace Rca.EzoDeviceLib
         /// The typical SlaveAddress for the EZO devices you can find in datasheet.
         /// Constructing this object will initialize it and prepare it for data retrieval.
         /// </summary>
-        public BaseDevice(byte slaveAddress)
+        public EzoBase(byte slaveAddress)
         {
             Init(slaveAddress);
         }

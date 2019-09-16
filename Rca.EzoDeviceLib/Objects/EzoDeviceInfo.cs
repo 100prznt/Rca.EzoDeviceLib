@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Rca.EzoDeviceLib.Objects
 {
     /// <summary>
-    /// Container with EZO device information
+    /// Container with EZO™ device information
     /// </summary>
     public class EzoDeviceInfo
     {

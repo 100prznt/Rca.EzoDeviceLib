@@ -15,7 +15,7 @@ namespace Rca.EzoDeviceLib
     /// ORP stands for oxidation/reduction potential.
     /// https://www.atlas-scientific.com/_files/_datasheets/_circuit/ORP_EZO_datasheet.pdf
     /// </summary>
-    public class OrpSensor : BaseDevice
+    public class EzoOrp : EzoBase
     {
         #region Constants
         private const int DEFAULT_ADDRESS = 0x62; //ORP EZO
@@ -31,7 +31,7 @@ namespace Rca.EzoDeviceLib
         /// Constructing this object will initialize it.
         /// </summary>
         /// <param name="slaveAddress">I2C slave address of EZO™ device</param>
-        public OrpSensor(byte slaveAddress = DEFAULT_ADDRESS) : base(slaveAddress)
+        public EzoOrp(byte slaveAddress = DEFAULT_ADDRESS) : base(slaveAddress)
         {
 
         }

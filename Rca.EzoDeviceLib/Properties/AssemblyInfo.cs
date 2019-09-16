@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EZO Device Library")]
-[assembly: AssemblyDescription("UWP Library for Atlas Scientific EZO Devices")]
+[assembly: AssemblyTitle("EZO™ Device Library")]
+[assembly: AssemblyDescription("UWP Library for Atlas Scientific EZO™ Devices")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RC-Art Solutions")]
 [assembly: AssemblyProduct("EzoDeviceLib")]

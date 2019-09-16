@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Rca.EzoDeviceLib.Objects
 {
     /// <summary>
-    /// EZO device response codes
+    /// EZO™ device response codes
     /// </summary>
     public enum ResponseCode : byte
     {

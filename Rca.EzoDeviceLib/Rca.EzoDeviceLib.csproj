@@ -122,12 +122,12 @@
   <ItemGroup>
     <Compile Include="Objects\EzoDeviceStatus.cs" />
     <Compile Include="Objects\EzoDeviceInfo.cs" />
-    <Compile Include="OrpSensor.cs" />
+    <Compile Include="EzoOrp.cs" />
     <Compile Include="Specific\Ph\CalPoint.cs" />
     <Compile Include="Objects\ResponseFormat.cs" />
     <Compile Include="Objects\RestartReason.cs" />
-    <Compile Include="BaseDevice.cs" />
-    <Compile Include="PhSensor.cs" />
+    <Compile Include="EzoBase.cs" />
+    <Compile Include="EzoPh.cs" />
     <Compile Include="Objects\EzoResponse.cs" />
     <Compile Include="EzoResponseException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
