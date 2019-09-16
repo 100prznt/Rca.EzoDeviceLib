@@ -57,7 +57,7 @@ double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 
 
 ## Hardware
-For fast hardware integration there is a cool project from [Whitebox](https://github.com/whitebox-labs). The [Tentacle T3 HAT](https://github.com/whitebox-labs/tentacle-raspi-oshw) accepts 3 EZO devices, two of them are electrically isolated.
+For fast hardware integration there is a cool project from [Whitebox](https://github.com/whitebox-labs). The [Tentacle T3 HAT](https://github.com/whitebox-labs/tentacle-raspi-oshw) accepts three Atlas Scientific EZO™ devices, two of them are electrically isolated.
 
 
 ## Credits
