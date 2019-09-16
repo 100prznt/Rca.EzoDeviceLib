@@ -34,6 +34,8 @@ namespace Rca.EzoDeviceLib
         #region Members
         private I2cDevice m_Sensor { get; set; }
 
+        private int m_I2CAddress;
+
         #endregion Members
 
         #region Properties
@@ -58,6 +60,14 @@ namespace Rca.EzoDeviceLib
         {
             get => GetProtocolLock();
             set => SetProtocolLock(value);
+        }
+
+        /// <summary>
+        /// I2C address of the current sensor connection
+        /// </summary>
+        public int I2CAddress
+        {
+            get => m_I2CAddress;
         }
 
         #endregion Properties
@@ -178,7 +188,7 @@ namespace Rca.EzoDeviceLib
         }
 
         /// <summary>
-        /// Set I2C address.
+        /// Set I2C address on the device.
         /// EZO device perform a restart after this command
         /// </summary>
         /// <param name="address">New I2C address (1 - 127)</param>
@@ -223,7 +233,7 @@ namespace Rca.EzoDeviceLib
         private void Init(int slaveAddress)
         {
             InitSensor(slaveAddress).Wait();
-            
+            m_I2CAddress = slaveAddress;
             //Softreset hier!
         }
 
@@ -233,6 +243,7 @@ namespace Rca.EzoDeviceLib
 
             string aqs = I2cDevice.GetDeviceSelector();
             var dis = await DeviceInformation.FindAllAsync(aqs);
+            var di = dis[0]; //only for debugging
             m_Sensor = await I2cDevice.FromIdAsync(dis[0].Id, settings);
         }
 

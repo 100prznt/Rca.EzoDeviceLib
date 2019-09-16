@@ -11,7 +11,7 @@ using Rca.EzoDeviceLib.Specific.Ph;
 namespace Rca.EzoDeviceLib
 {
     /// <summary>
-    /// Represents a pH probe connected to an Atlas Scientific EZO™ pH Circuit.
+    /// Represents a pH probe connected to an Atlas Scientific EZO™ pH circuit.
     /// https://www.atlas-scientific.com/product_pages/circuits/ezo_ph.html
     /// </summary>
     public class EzoPh : EzoBase
