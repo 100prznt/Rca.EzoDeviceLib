@@ -1,7 +1,7 @@
 ## Project under construction :construction:
 ```diff
-! This project is currently  (2019/08/30) under construction.
-! Currently only the pH and the ORP EZO™ device are supported.
+! This project is currently  (2019/09/16) under construction.
+! Currently only the pH and the ORP EZO™ device are supported, RTD is in progress.
 ```
 
 ---
@@ -54,6 +54,10 @@ With tempreature compensation:
 double temperature = 23.5; //temperature in °C
 double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 ```
+
+
+## Hardware
+For fast hardware integration there is a cool project from [Whitebox](https://github.com/whitebox-labs). The [Tentacle T3 HAT](https://github.com/whitebox-labs/tentacle-raspi-oshw) accepts three Atlas Scientific EZO™ devices, two of them are electrically isolated.
 
 
 ## Credits
