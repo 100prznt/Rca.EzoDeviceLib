@@ -18,11 +18,15 @@ namespace Rca.EzoDeviceLib
     public class EzoOrp : EzoBase
     {
         #region Constants
-        private const int DEFAULT_ADDRESS = 0x62; //ORP EZO
+        public const int DEFAULT_ADDRESS = 0x62; //ORP EZO
 
         #endregion Constants
 
         #region Properties
+        /// <summary>
+        /// Additional information about the measured value
+        /// </summary>
+        public override MeasDataInfo ValueInfo => new MeasDataInfo("Redox potential", "Millivolt", "mV");
 
         #endregion Properties
 

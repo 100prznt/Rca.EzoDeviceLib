@@ -17,7 +17,7 @@ namespace Rca.EzoDeviceLib
     public class EzoPh : EzoBase
     {
         #region Constants
-        private const int DEFAULT_ADDRESS = 0x63; //pH EZO
+        public const int DEFAULT_ADDRESS = 0x63; //pH EZO
 
         #endregion Constants
 
@@ -31,6 +31,11 @@ namespace Rca.EzoDeviceLib
             set => SetTemperatureCompensation(value);
         }
 
+        /// <summary>
+        /// Additional information about the measured value
+        /// </summary>
+        public override MeasDataInfo ValueInfo => new MeasDataInfo("PH value", "", "");
+        
         #endregion Properties
 
         #region Constructor

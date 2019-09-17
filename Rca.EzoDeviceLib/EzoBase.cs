@@ -34,8 +34,6 @@ namespace Rca.EzoDeviceLib
         #region Members
         private I2cDevice m_Sensor { get; set; }
 
-        private int m_I2CAddress;
-
         #endregion Members
 
         #region Properties
@@ -65,10 +63,12 @@ namespace Rca.EzoDeviceLib
         /// <summary>
         /// I2C address of the current sensor connection
         /// </summary>
-        public int I2CAddress
-        {
-            get => m_I2CAddress;
-        }
+        public int I2CAddress { get; private set; }
+
+        /// <summary>
+        /// Additional information about the measured value
+        /// </summary>
+        public abstract MeasDataInfo ValueInfo { get; }
 
         #endregion Properties
 
@@ -233,7 +233,7 @@ namespace Rca.EzoDeviceLib
         private void Init(int slaveAddress)
         {
             InitSensor(slaveAddress).Wait();
-            m_I2CAddress = slaveAddress;
+            I2CAddress = slaveAddress;
             //Softreset hier!
         }
 

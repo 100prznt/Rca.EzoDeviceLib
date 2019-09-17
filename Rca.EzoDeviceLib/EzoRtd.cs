@@ -18,7 +18,7 @@ namespace Rca.EzoDeviceLib
     public class EzoRtd : EzoBase
     {
         #region Constants
-        private const int DEFAULT_ADDRESS = 0x66; //RTD EZO
+        public const int DEFAULT_ADDRESS = 0x66; //RTD EZO
 
         #endregion Constants
 
@@ -31,6 +31,11 @@ namespace Rca.EzoDeviceLib
         //    get => GetTemperatureCompensation();
         //    set => SetTemperatureCompensation(value);
         //}
+
+        /// <summary>
+        /// Additional information about the measured value
+        /// </summary>
+        public override MeasDataInfo ValueInfo => new MeasDataInfo("Temperature", "Cecius", "°C");
 
         #endregion Properties
 

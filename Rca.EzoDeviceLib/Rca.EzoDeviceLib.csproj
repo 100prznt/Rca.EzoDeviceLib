@@ -122,6 +122,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="EzoRtd.cs" />
+    <Compile Include="MeasDataInfo.cs" />
     <Compile Include="Objects\EzoDeviceStatus.cs" />
     <Compile Include="Objects\EzoDeviceInfo.cs" />
     <Compile Include="EzoOrp.cs" />
