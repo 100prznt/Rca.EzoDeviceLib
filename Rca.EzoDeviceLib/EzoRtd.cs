@@ -36,7 +36,14 @@ namespace Rca.EzoDeviceLib
         /// <summary>
         /// Additional information about the measured value
         /// </summary>
-        public override MeasDataInfo ValueInfo => new MeasDataInfo("Temperature", "Celsius", "°C"); //  \u00B0 = °
+        public override MeasDataInfo ValueInfo
+        {
+            get
+            {
+                var scale = GetTemperatureScale();
+                return new MeasDataInfo("Temperature", scale.GetName(), scale.GetSymbol());
+            }
+        }
 
         #endregion Properties
 
@@ -64,31 +71,6 @@ namespace Rca.EzoDeviceLib
 
             return ReadDouble();
         }
-
-        /// <summary>
-        /// Get slope information from characteristic curve
-        /// </summary>
-        /// <returns></returns>
-        //public Slope GetSlope()
-        //{
-        //    WriteCommand("Slope,?");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
-
-        //    var response = ReadResponse(ResponseFormat.DataWithCommand);
-        //    if (response.IsSuccessful)
-        //    {
-        //        try
-        //        {
-        //            return Slope.FromResponseData(response.Data);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new EzoResponseException(response.Code, "Invalid data", ex);
-        //        }
-        //    }
-        //    else
-        //        throw new EzoResponseException(response.Code);
-        //}
 
         #region Calibration
         ///// <summary>
