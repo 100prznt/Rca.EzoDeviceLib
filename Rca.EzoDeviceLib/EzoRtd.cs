@@ -73,130 +73,125 @@ namespace Rca.EzoDeviceLib
         }
 
         #region Calibration
-        ///// <summary>
-        ///// Set a new calibration point.
-        ///// Issuing  the  <code>SetCalibrationPoint(EzoPhCalPoint.Mid, x.xx)</code>  command  after
-        ///// the EZO pH circuit has been calibrated, will clear  the other  calibration points. Full
-        ///// calibration will have to be redone. 
-        ///// </summary>
-        ///// <param name="point">Calibration range</param>
-        ///// <param name="value">pH value of the buffer solution</param>
-        //public void SetCalibrationPoint(CalPoint point, double value)
-        //{
-        //    var cmd = new StringBuilder("cal,");
-        //    cmd.Append(point.ToString().ToLower());
-        //    cmd.Append(",");
-        //    cmd.Append(value.ToString("F2", CultureInfo.InvariantCulture));
+        /// <summary>
+        /// Set thecalibration point.
+        /// EZO RTD circuit uses single point calibration.
+        /// </summary>
+        /// <param name="value">reference temperature</param>
+        public void SetCalibrationPoint(double value)
+        {
+            var cmd = new StringBuilder("Cal,");
+            cmd.Append(value.ToString("F2", CultureInfo.InvariantCulture));
 
-        //    WriteCommand(cmd.ToString());
-        //    SpinWait.SpinUntil(() => false, 900);
-        //    ReadAck(); //throws exception if failed
-        //}
+            WriteCommand(cmd.ToString());
+            SpinWait.SpinUntil(() => false, 900);
+            ReadAck(); //throws exception if failed
+        }
 
-        ///// <summary>
-        ///// Clear all claibration data from the EZO device.
-        ///// </summary>
-        //public void ClearCalibration()
-        //{
-        //    WriteCommand("Cal,clear");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
-        //    ReadAck(); //throws exception if failed
-        //}
+        /// <summary>
+        /// Clear claibration data from the EZO device.
+        /// </summary>
+        public void ClearCalibration()
+        {
+            WriteCommand("Cal,clear");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+            ReadAck(); //throws exception if failed
+        }
 
-        ///// <summary>
-        ///// Returns the number of stored calibration points
-        ///// </summary>
-        ///// <returns>Number of stored calibration points</returns>
-        //public int GetCalibrationInfo()
-        //{
-        //    WriteCommand("Cal,?");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        /// <summary>
+        /// Returns the number of stored calibration points (1 or 0)
+        /// </summary>
+        /// <returns>Number of stored calibration points (1 or 0)</returns>
+        public int GetCalibrationInfo()
+        {
+            WriteCommand("Cal,?");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
 
-        //    var response = ReadResponse();
-        //    if (response.IsSuccessful)
-        //    {
-        //        try
-        //        {
-        //            return int.Parse(response.Data[0]);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new EzoResponseException(response.Code, "Invalid data", ex);
-        //        }
-        //    }
-        //    else
-        //        throw new EzoResponseException(response.Code);
-        //}
+            var response = ReadResponse();
+            if (response.IsSuccessful)
+            {
+                try
+                {
+                    return int.Parse(response.Data[0]);
+                }
+                catch (Exception ex)
+                {
+                    throw new EzoResponseException(response.Code, "Invalid data", ex);
+                }
+            }
+            else
+                throw new EzoResponseException(response.Code);
+        }
 
-        ///// <summary>
-        ///// Download calibration settings
-        ///// </summary>
-        ///// <returns>Raw calibration settings</returns>
-        //public byte[][] DownloadCalibration()
-        //{
-        //    WriteCommand("Export,?");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        /// <summary>
+        /// Download calibration settings
+        /// </summary>
+        /// <returns>Raw calibration settings</returns>
+        public byte[][] DownloadCalibration()
+        {
+            WriteCommand("Export,?");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
 
-        //    var response = ReadResponse(ResponseFormat.DataWithCommand);
+            var response = ReadResponse(ResponseFormat.DataWithCommand);
 
-        //    if (response.Code != ResponseCode.SuccessfulRequest)
-        //        throw new EzoResponseException(response.Code);
+            if (response.Code != ResponseCode.SuccessfulRequest)
+                throw new EzoResponseException(response.Code);
 
-        //    try
-        //    {
-        //        int expCount = int.Parse(response.Data[0]);
-        //        int expBytes = int.Parse(response.Data[1]);
-        //        byte[][] calibData = new byte[expCount][];
+            try
+            {
+                int expCount = int.Parse(response.Data[0]);
+                int expBytes = int.Parse(response.Data[1]);
+                byte[][] calibData = new byte[expCount][];
 
-        //        for (int i = 0; i < expCount; i++)
-        //        {
-        //            var row = DownloadCalibrationRow();
-        //            calibData[i] = row;
+                for (int i = 0; i < expCount; i++)
+                {
+                    var row = DownloadCalibrationRow();
+                    calibData[i] = row;
 
-        //            expBytes -= row.Length;
-        //        }
+                    expBytes -= row.Length;
+                }
 
-        //        if (expBytes > 0)
-        //            throw new ArgumentException("Mismatch between fetched and expected calibration data.");
+                if (expBytes > 0)
+                    throw new ArgumentException("Mismatch between fetched and expected calibration data.");
 
-        //        return calibData;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new EzoResponseException(response.Code, "Fetching export info fails.", ex);
-        //    }
-        //}
+                return calibData;
+            }
+            catch (Exception ex)
+            {
+                throw new EzoResponseException(response.Code, "Fetching export info fails.", ex);
+            }
+        }
 
-        ///// <summary>
-        ///// Download one calibration row/string from calibrated device
-        ///// </summary>
-        ///// <returns>Calibration row</returns>
-        //private byte[] DownloadCalibrationRow()
-        //{
-        //    WriteCommand("Export");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        /// <summary>
+        /// Download one calibration row/string from calibrated device
+        /// </summary>
+        /// <returns>Calibration row</returns>
+        private byte[] DownloadCalibrationRow()
+        {
+            WriteCommand("Export");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
 
-        //    var response = ReadResponse(ResponseFormat.Unformated);
+            var response = ReadResponse(ResponseFormat.Unformated);
 
-        //    if (response.Code == ResponseCode.SuccessfulRequest)
-        //        return response.Payload;
-        //    else
-        //        throw new EzoResponseException(response.Code);
-        //}
+            if (response.Code == ResponseCode.SuccessfulRequest)
+                return response.Payload;
+            else
+                throw new EzoResponseException(response.Code);
+        }
 
-        //public void UploadCalibration(byte[][] data)
-        //{
-        //    foreach (var row in data)
-        //        UploadCalibration(row);
-        //}
+        public void UploadCalibration(byte[][] data)
+        {
+            foreach (var row in data)
+                UploadCalibration(row);
+        }
 
-        //private void UploadCalibration(byte[] data)
-        //{
-        //    var encoder = new ASCIIEncoding();
-        //    var row = encoder.GetString(data);
-        //    WriteCommand($"Import, {row}");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
-        //}
+        private void UploadCalibration(byte[] data)
+        {
+            var encoder = new ASCIIEncoding();
+            var row = encoder.GetString(data);
+            WriteCommand($"Import, {row}");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        }
 
         #endregion Calibration
 
