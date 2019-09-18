@@ -9,7 +9,7 @@ namespace Rca.EzoDeviceLib.Objects
     /// <summary>
     /// Reason for last restart
     /// </summary>
-    public enum RestartReason
+    public enum RestartReasons
     {
         /// <summary>
         /// unknown

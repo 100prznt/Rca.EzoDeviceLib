@@ -9,7 +9,7 @@ namespace Rca.EzoDeviceLib.Objects
 {
     public static class RestartReasonExtensions
     {
-        public static string GetRestartCode(this RestartReason restartReason)
+        public static string GetRestartCode(this RestartReasons restartReason)
         {
             Attribute[] attributes = restartReason.GetAttributes();
 
@@ -30,7 +30,7 @@ namespace Rca.EzoDeviceLib.Objects
                 return attr.RestartCode.ToString();
         }
 
-        private static Attribute[] GetAttributes(this RestartReason restartReason)
+        private static Attribute[] GetAttributes(this RestartReasons restartReason)
         {
             var fi = restartReason.GetType().GetField(restartReason.ToString());
             Attribute[] attributes = (Attribute[])fi.GetCustomAttributes(typeof(Attribute), false);

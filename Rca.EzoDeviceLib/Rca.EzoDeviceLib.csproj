@@ -128,7 +128,7 @@
     <Compile Include="EzoOrp.cs" />
     <Compile Include="Specific\Ph\CalPoint.cs" />
     <Compile Include="Objects\ResponseFormat.cs" />
-    <Compile Include="Objects\RestartReason.cs" />
+    <Compile Include="Objects\RestartReasons.cs" />
     <Compile Include="EzoBase.cs" />
     <Compile Include="EzoPh.cs" />
     <Compile Include="Objects\EzoResponse.cs" />
@@ -138,6 +138,9 @@
     <Compile Include="Objects\RestartReasonCodeAttribute.cs" />
     <Compile Include="Objects\RestartReasonExtensions.cs" />
     <Compile Include="Specific\Ph\Slope.cs" />
+    <Compile Include="Specific\Rtd\TemperatureScaleExtensions.cs" />
+    <Compile Include="Specific\Rtd\TemperatureScaleAttribute.cs" />
+    <Compile Include="Specific\Rtd\TemperatureScales.cs" />
     <EmbeddedResource Include="Properties\Rca.EzoDeviceLib.rd.xml" />
   </ItemGroup>
   <ItemGroup>

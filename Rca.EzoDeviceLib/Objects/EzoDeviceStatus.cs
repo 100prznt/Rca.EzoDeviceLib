@@ -14,7 +14,7 @@ namespace Rca.EzoDeviceLib.Objects
         /// <summary>
         /// Resatart code (reason for restart)
         /// </summary>
-        public RestartReason RestartCode { get; set; }
+        public RestartReasons RestartCode { get; set; }
 
         /// <summary>
         /// Voltage at Vcc [V]
@@ -26,7 +26,7 @@ namespace Rca.EzoDeviceLib.Objects
         /// </summary>
         /// <param name="restartCode">Resatart code (reason for restart)</param>
         /// <param name="vccVoltage">Voltage at Vcc [V]</param>
-        public EzoDeviceStatus(RestartReason restartCode, double vccVoltage)
+        public EzoDeviceStatus(RestartReasons restartCode, double vccVoltage)
         {
             RestartCode = restartCode;
             VccVoltage = vccVoltage;

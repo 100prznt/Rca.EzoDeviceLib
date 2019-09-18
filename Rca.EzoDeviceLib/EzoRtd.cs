@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Rca.EzoDeviceLib.Objects;
 using Rca.EzoDeviceLib.Specific.Ph;
+using Rca.EzoDeviceLib.Specific.Rtd;
 
 namespace Rca.EzoDeviceLib
 {
@@ -23,19 +24,19 @@ namespace Rca.EzoDeviceLib
         #endregion Constants
 
         #region Properties
-        ///// <summary>
-        ///// Get or set the temperatur for internal temperatur compensation.
-        ///// </summary>
-        //public double TemperatureCompensation
-        //{
-        //    get => GetTemperatureCompensation();
-        //    set => SetTemperatureCompensation(value);
-        //}
+        /// <summary>
+        /// Get or set the temperatur scale.
+        /// </summary>
+        public TemperatureScales TemperatureCompensation
+        {
+            get => GetTemperatureScale();
+            set => SetTemperatureScale(value);
+        }
 
         /// <summary>
         /// Additional information about the measured value
         /// </summary>
-        public override MeasDataInfo ValueInfo => new MeasDataInfo("Temperature", "Cecius", "°C");
+        public override MeasDataInfo ValueInfo => new MeasDataInfo("Temperature", "Celsius", "°C"); //  \u00B0 = °
 
         #endregion Properties
 
@@ -221,32 +222,37 @@ namespace Rca.EzoDeviceLib
 
         #region Internal services
 
-        //private void SetTemperatureCompensation(double temperature)
-        //{
-        //    WriteCommand($"L,{temperature.ToString("F2", CultureInfo.InvariantCulture)}");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
-        //}
+        private void SetTemperatureScale(TemperatureScales scale)
+        {
+            WriteCommand($"S,{scale.GetScaleCode()}");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        }
 
-        //private double GetTemperatureCompensation()
-        //{
-        //    WriteCommand("T,?");
-        //    SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
+        private TemperatureScales GetTemperatureScale()
+        {
+            WriteCommand("S,?");
+            SpinWait.SpinUntil(() => false, PROCESSING_DELAY);
 
-        //    var response = ReadResponse(ResponseFormat.DataWithCommand);
-        //    if (response.IsSuccessful)
-        //    {
-        //        try
-        //        {
-        //            return double.Parse(response.Data[0]);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            throw new EzoResponseException(response.Code, "Invalid data", ex);
-        //        }
-        //    }
-        //    else
-        //        throw new EzoResponseException(response.Code);
-        //}
+            var response = ReadResponse(ResponseFormat.DataWithCommand);
+            if (response.IsSuccessful)
+            {
+                try
+                {
+                    foreach (TemperatureScales ts in Enum.GetValues(typeof(TemperatureScales)))
+                    {
+                        if (string.Equals(ts.GetScaleCode(), response.Data[0], StringComparison.OrdinalIgnoreCase))
+                            return ts;                            
+                    }
+                    throw new EzoResponseException(response.Code, "Invalid data for \"S,?\" command: " + response.Data[0]);
+                }
+                catch (Exception ex)
+                {
+                    throw new EzoResponseException(response.Code, "Invalid data", ex);
+                }
+            }
+            else
+                throw new EzoResponseException(response.Code);
+        }
 
         #endregion Internal services
     }

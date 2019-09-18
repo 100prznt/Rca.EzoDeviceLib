@@ -166,8 +166,8 @@ namespace Rca.EzoDeviceLib
             {
                 try
                 {
-                    var restartReason = RestartReason.Unknown;
-                    foreach (RestartReason rr in Enum.GetValues(typeof(RestartReason)))
+                    var restartReason = RestartReasons.Unknown;
+                    foreach (RestartReasons rr in Enum.GetValues(typeof(RestartReasons)))
                     {
                         if (string.Equals(rr.GetRestartCode(), response.Data[0], StringComparison.OrdinalIgnoreCase))
                         {
@@ -303,7 +303,7 @@ namespace Rca.EzoDeviceLib
             {
                 try
                 {
-                    return double.Parse(response.Data[0]);
+                    return double.Parse(response.Data[0], CultureInfo.InvariantCulture);
                 }
                 catch (Exception ex)
                 {
