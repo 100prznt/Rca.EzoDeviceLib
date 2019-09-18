@@ -1,12 +1,12 @@
 ## Project under construction :construction:
 ```diff
-! This project is currently  (2019/09/16) under construction.
-! Currently only the pH and the ORP EZO™ device are supported, RTD is in progress.
+! This project is currently  (2019/09/18) under construction.
+! Currently only the pH, ORP and the RTD EZO™ device are supported, RTD is in progress.
 ```
 
 ---
 
-![EZO Devices on the Whitebox carrier](docu/img/ezo-on-whitebox-carrier.jpg "Atlas Scientific EZO™ devices (pH and ORP) on the Whitebox carrier.")
+![EZO Devices on the Whitebox carrier](docu/img/wb-ezo-hat.jpg "Atlas Scientific EZO™ devices (pH, ORP and RTD) on the Whitebox carrier.")
 # EzoDeviceLib
 Open source UWP library for communication with Atlas Scientific EZO™ devices. This library covers all I2C commands. You can trigger measurements, set temperature compensation, get device info and state, due the calibration, import/export calibration data, etc.
 
@@ -14,6 +14,7 @@ This library targets __UWP IoT projects__! Download directly from NuGet [Rca.Ezo
 
 * Support for EZO™ pH device
 * Support for EZO™ ORP device
+* Support for EZO™ RTD device
 
 
 [![Bulid](https://img.shields.io/appveyor/ci/100prznt/rca-ezodevicelib.svg?logo=appveyor&style=popout-square)](https://ci.appveyor.com/project/100prznt/rca-ezodevicelib)   [![Current version](https://img.shields.io/nuget/v/Rca.EzoDeviceLib.svg?logo=nuget&logoColor=%23ef8b00&style=popout-square)](https://www.nuget.org/packages/Rca.EzoDeviceLib/)   [![Code size](https://img.shields.io/github/languages/code-size/100prznt/Rca.EzoDeviceLib.svg?logo=github&style=popout-square)](#) 
