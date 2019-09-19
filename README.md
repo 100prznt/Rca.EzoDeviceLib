@@ -77,4 +77,4 @@ Contributions are welcome. Fork this repository and send a pull request if you h
 
 ## Related Projects
 * [Rca.Sht85Lib](https://github.com/100prznt/Rca.Sht85Lib) - Another sensor library for the Sensirion humidity sensor SHT85.
-* [OpenPoolControl](https://github.com/100prznt/opc) - My very own pool controller.
+* [EzoGateway](https://github.com/100prznt/EzoGateway) - UWP App to bring your EZO™ devices in the IoT.
