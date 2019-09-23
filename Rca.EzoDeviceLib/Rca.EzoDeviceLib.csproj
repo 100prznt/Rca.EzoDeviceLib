@@ -121,11 +121,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Events\EzoRTD_EventArgs.cs" />
+    <Compile Include="Events\RaiseEventHelper.cs" />
     <Compile Include="EzoRtd.cs" />
+    <Compile Include="EzoTimedBase.cs" />
     <Compile Include="MeasDataInfo.cs" />
     <Compile Include="Objects\EzoDeviceStatus.cs" />
     <Compile Include="Objects\EzoDeviceInfo.cs" />
     <Compile Include="EzoOrp.cs" />
+    <Compile Include="Objects\ReadingMode.cs" />
     <Compile Include="Specific\Ph\CalPoint.cs" />
     <Compile Include="Objects\ResponseFormat.cs" />
     <Compile Include="Objects\RestartReasons.cs" />
@@ -156,9 +160,7 @@
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
