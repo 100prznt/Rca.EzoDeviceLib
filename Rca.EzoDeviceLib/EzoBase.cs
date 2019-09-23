@@ -70,20 +70,46 @@ namespace Rca.EzoDeviceLib
         /// </summary>
         public abstract MeasDataInfo ValueInfo { get; }
 
+        private I2cConnectionSettings Settings { get; }
+
+        private readonly string deviceSelector;
+
         #endregion Properties
 
-        #region Constructor
+        #region Constructor + Init
         /// <summary>
         /// Constructor requires a single byte 'SlaveAddress' as an argument.
         /// The typical SlaveAddress for the EZO devices you can find in datasheet.
         /// Constructing this object will initialize it and prepare it for data retrieval.
         /// </summary>
-        public EzoBase(byte slaveAddress)
+        public EzoBase(int slaveAddress, I2cBusSpeed busSpeed = I2cBusSpeed.FastMode, I2cSharingMode sharingMode = I2cSharingMode.Shared)
         {
-            Init(slaveAddress);
+            Settings = new I2cConnectionSettings(slaveAddress)
+            {
+                BusSpeed = busSpeed,
+                SharingMode = sharingMode
+            };
+            I2CAddress = slaveAddress;
+
+            deviceSelector = I2cDevice.GetDeviceSelector();
         }
 
+        public async Task InitSensor()
+        {
+            var dis = await DeviceInformation.FindAllAsync(deviceSelector);
+            m_Sensor = await I2cDevice.FromIdAsync(dis[0].Id, Settings);
+
+            await InitializeSensorAsync();
+        }
+
+        protected virtual Task InitializeSensorAsync() => Task.FromResult<object>(null);
+
+        private static bool _isInited;
+
+        public bool IsDevicedInited => _isInited;
+
         #endregion Constructor
+
 
         #region Services
 
@@ -218,7 +244,7 @@ namespace Rca.EzoDeviceLib
         /// <summary>
         /// Disposes the internal Sensor object when Dispose() is called on this object.
         /// </summary>
-        public void Dispose()
+        public virtual void Dispose()
         {
             if (m_Sensor != null)
             {
@@ -230,22 +256,8 @@ namespace Rca.EzoDeviceLib
         #endregion Services
 
         #region Internal services
-        private void Init(int slaveAddress)
-        {
-            InitSensor(slaveAddress).Wait();
-            I2CAddress = slaveAddress;
-            //Softreset hier!
-        }
 
-        private async Task InitSensor(int slaveAddress)
-        {
-            var settings = new I2cConnectionSettings(slaveAddress) { BusSpeed = BusSpeed };
 
-            string aqs = I2cDevice.GetDeviceSelector();
-            var dis = await DeviceInformation.FindAllAsync(aqs);
-            var di = dis[0]; //only for debugging
-            m_Sensor = await I2cDevice.FromIdAsync(dis[0].Id, settings);
-        }
 
         /// <summary>
         /// Send a ASCII formated command to the sensor
@@ -279,7 +291,7 @@ namespace Rca.EzoDeviceLib
             var buffer = new byte[READ_BUFFER_LENGTH];
             m_Sensor.Read(buffer);
 
-            var response =  EzoResponse.FromBuffer(buffer, ResponseFormat.Ack);
+            var response = EzoResponse.FromBuffer(buffer, ResponseFormat.Ack);
 
             if (response.Code == ResponseCode.SuccessfulRequest)
                 return true;
@@ -344,7 +356,7 @@ namespace Rca.EzoDeviceLib
             else
                 throw new EzoResponseException(response.Code);
         }
-        
+
         private void SetProtocolLock(bool pLock)
         {
             int state = pLock ? 1 : 0;
