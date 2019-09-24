@@ -58,7 +58,10 @@ namespace Rca.EzoDeviceLib
         #endregion Properties
 
         #region Constructor - Init
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="slaveAddress"></param>
         public EzoRtd(byte slaveAddress)
             : base(slaveAddress, new TimeSpan(), ReadingMode.Manual)
         { }

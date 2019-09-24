@@ -9,50 +9,77 @@ using Windows.Devices.I2c;
 
 namespace Rca.EzoDeviceLib
 {
+    /// <summary>
+    /// Extends the <seealso cref="EzoBase"/> class to functionality for continuous timed reading.
+    /// </summary>
     public abstract class EzoTimedBase : EzoBase
     {
-        private readonly Timer timer;
+        #region Members
+        private readonly Timer m_Timer;
 
-        private ReadingMode readingMode;
+        private ReadingMode m_ReadingMode;
+
+        private TimeSpan m_ReadInterval;
+
+        #endregion Members
+
+        #region Properties
+        /// <summary>
+        /// Current reading mode
+        /// </summary>
         public ReadingMode ReadingMode
         {
-            get { return readingMode; }
-            set { this.Initialize(value); }
+            get => m_ReadingMode; 
+            set => this.Initialize(value);
         }
 
-        private TimeSpan readInterval;
+        /// <summary>
+        /// Interval for continuous timed reading
+        /// </summary>
         public TimeSpan ReadInterval
         {
-            get { return readInterval; }
+            get => m_ReadInterval; 
             set
             {
                 if (ReadingMode == ReadingMode.Manual)
                     throw new NotSupportedException($"You cannot change {nameof(ReadInterval)} when {nameof(ReadingMode)} is set to {ReadingMode.Manual}.");
 
-                readInterval = value;
-                timer?.Change(0, (int)readInterval.TotalMilliseconds);
+                m_ReadInterval = value;
+                m_Timer?.Change(0, (int)m_ReadInterval.TotalMilliseconds);
             }
         }
 
+        #endregion Properties
+
+        #region Constructor
+        /// <summary>
+        /// Constructor to use the continuous reading mode.
+        /// </summary>
+        /// <param name="slaveAddress">I2C address of the EZO™ RTD Circuit</param>
+        /// <param name="readInterval">interval for continuous reading</param>
+        /// <param name="modeR">Reading mode (default: Continuous)</param>
         public EzoTimedBase(byte slaveAddress, TimeSpan readInterval, ReadingMode modeR)
                 : base(slaveAddress, I2cBusSpeed.FastMode, I2cSharingMode.Shared)
         {
-            timer = new Timer(CheckState, null, Timeout.Infinite, Timeout.Infinite);
+            m_Timer = new Timer(CheckState, null, Timeout.Infinite, Timeout.Infinite);
 
-            this.readingMode = modeR;
-            this.readInterval = readInterval;
+            this.m_ReadingMode = modeR;
+            this.m_ReadInterval = readInterval;
         }
 
-        protected void InitializeTimer() => this.Initialize(readingMode);
+        #endregion Constructor
+
+
+        protected void InitializeTimer() => this.Initialize(m_ReadingMode);
 
         private void Initialize(ReadingMode newMode)
         {
-            this.readingMode = newMode;
+            this.m_ReadingMode = newMode;
 
-            if (readingMode == ReadingMode.Continuous)
-                timer.Change(0, (int)readInterval.TotalMilliseconds);
+            if (m_ReadingMode == ReadingMode.Continuous)
+                m_Timer.Change(0, (int)m_ReadInterval.TotalMilliseconds);
             else
-                timer.Change(Timeout.Infinite, Timeout.Infinite);
+                m_Timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
         private void CheckState(object state) => OnTimerAsync();
@@ -61,7 +88,7 @@ namespace Rca.EzoDeviceLib
 
         public virtual new void Dispose()
         {
-            timer.Dispose();
+            m_Timer.Dispose();
             base.Dispose();
         }
     }
