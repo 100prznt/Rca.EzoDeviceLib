@@ -1,7 +1,7 @@
 ## Project under construction :construction:
 ```diff
-! This project is currently  (2019/09/18) under construction.
-! Currently only the pH, ORP and the RTD EZO™ device are supported, RTD is in progress.
+! This project is currently  (2019/09/24) under construction.
+! Currently only the pH, ORP and the RTD EZO™ device are supported.
 ```
 
 ---
@@ -33,19 +33,20 @@ Some basic usage examples
 In this example is the I2C address of conneted EZO™ device set to default (0x63 for EZO™ pH Circuit):
 ```cs
 var myEzoPhSensor = new PhSensor();
+await myEzoPhSensor.InitSensorAsync();
 ```
 
 Or create an instance with custom parameters:
 ```cs
-var myEzoPhSensor = new PhSensor(0x1A) //set specific I2C address (0x1A) of connected EZO device
-{
-	BusSpeed = I2cBusSpeed.FastMode //default is StandardMode
-};
+var myEzoPhSensor = new PhSensor(0x1A, I2cBusSpeed.FastMode) //set specific I2C address (0x1A) and bus speed
+awaitmyEzoPhSensor.InitSensorAsync();
 ```
 
 Or create an instance with timed (1 sec. in this case) firing event.
+Note: Not supported for all sensors/devices!
 ```cs
-Public static myEzoRTD_Sensor = new EzoRtd(0x66, new TimeSpan(0, 0, 1), Rca.EzoDeviceLib.Objects.ReadingMode.Continuous);
+static EzoRtd myEzoRTDSensor = new EzoRtd(0x66, new TimeSpan(0, 0, 1), ReadingMode.Continuous);
+//...
 ```
 
 	
@@ -61,13 +62,14 @@ double temperature = 23.5; //temperature in °C
 double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
 ```
 
-Subscribe to timed event, if your event is firing from backgroundTask you can access it from anyware.
+### Subscribe to timed event (EzoTimedBase devices)
+If your event is firing from BackgroundTask you can access it from anywhere:
 ```cs
-myEzoPhSensor.ValueChanged += TempIn_ValueChanged;
+myEzoRtdSensor.ValueChanged += TempIn_ValueChanged;
 ```
-Dont forget to unsubscribe
+Dont forget to unsubscribe:
 ```cs
-myEzoPhSensor.ValueChanged -= TempIn_ValueChanged;
+myEzoRtdSensor.ValueChanged -= TempIn_ValueChanged;
 ```
 
 
@@ -78,6 +80,7 @@ For fast hardware integration there is a cool project from [Whitebox](https://gi
 ## Credits
 This library is made possible by contributions from:
 * [Elias Rümmler](http://www.100prznt.de) ([@rmmlr](https://github.com/rmmlr)) - core contributor
+* Vlad ([@tvlada73](https://github.com/tvlada73)) - Add `EzoTimedBase`
 
 ## License
 Rca.EzoDeviceLib is licensed under [MIT](http://www.opensource.org/licenses/mit-license.php "Read more about the MIT license form"). Refer to [LICENSE.txt](https://github.com/100prznt/EzoDeviceLib/blob/master/LICENSE.txt) for more information.
