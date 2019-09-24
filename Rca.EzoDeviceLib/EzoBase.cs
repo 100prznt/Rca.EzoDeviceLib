@@ -38,9 +38,7 @@ namespace Rca.EzoDeviceLib
 
         #region Properties
         /// <summary>
-        /// I2C bus speed
         /// </summary>
-        public I2cBusSpeed BusSpeed { get; set; }
 
         /// <summary>
         /// LED control
