@@ -34,6 +34,8 @@ namespace Rca.EzoDeviceLib
         #region Members
         private I2cDevice m_Sensor { get; set; }
 
+        private readonly string m_DeviceSelector;
+
         #endregion Members
 
         #region Properties
@@ -41,6 +43,11 @@ namespace Rca.EzoDeviceLib
         /// I2C connection settings for the EZO™ device
         /// </summary>
         public I2cConnectionSettings Settings { get; private set; }
+
+        /// <summary>
+        /// I2C address of the current sensor connection
+        /// </summary>
+        public int I2CAddress { get; private set; }
 
         /// <summary>
         /// LED control
@@ -61,18 +68,10 @@ namespace Rca.EzoDeviceLib
         }
 
         /// <summary>
-        /// I2C address of the current sensor connection
-        /// </summary>
-        public int I2CAddress { get; private set; }
-
-        /// <summary>
         /// Additional information about the measured value
         /// </summary>
         public abstract MeasDataInfo ValueInfo { get; }
-
-
-        private readonly string deviceSelector;
-
+        
         #endregion Properties
 
         #region Constructor + Init
@@ -91,12 +90,16 @@ namespace Rca.EzoDeviceLib
             };
             I2CAddress = slaveAddress;
 
-            deviceSelector = I2cDevice.GetDeviceSelector();
+            m_DeviceSelector = I2cDevice.GetDeviceSelector();
         }
 
-        public async Task InitSensor()
+        /// <summary>
+        /// Initialize sensor
+        /// </summary>
+        /// <returns></returns>
+        public async Task InitSensorAsync()
         {
-            var dis = await DeviceInformation.FindAllAsync(deviceSelector);
+            var dis = await DeviceInformation.FindAllAsync(m_DeviceSelector);
             m_Sensor = await I2cDevice.FromIdAsync(dis[0].Id, Settings);
 
             await InitializeSensorAsync();
@@ -109,7 +112,6 @@ namespace Rca.EzoDeviceLib
         public bool IsDevicedInited => _isInited;
 
         #endregion Constructor
-
 
         #region Services
 
