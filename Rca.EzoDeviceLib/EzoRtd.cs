@@ -23,7 +23,7 @@ namespace Rca.EzoDeviceLib
         /// <summary>
         /// Factory I2C adress of the EZO™ RTD Circuit
         /// </summary>
-        /// <remarks>Can be used to prefill setting files.</remarks>
+        /// <remarks>Public for external usage, e.g. to prefill setting files.</remarks>
         public const int DEFAULT_ADDRESS = 0x66;
 
         #endregion Constants

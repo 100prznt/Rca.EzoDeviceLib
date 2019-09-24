@@ -71,7 +71,7 @@ namespace Rca.EzoDeviceLib
         /// Additional information about the measured value
         /// </summary>
         public abstract MeasDataInfo ValueInfo { get; }
-        
+
         #endregion Properties
 
         #region Constructor + Init

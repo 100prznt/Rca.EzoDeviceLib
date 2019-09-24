@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Rca.EzoDeviceLib.Objects
 {
     /// <summary>
-    /// Mod for timed reading
+    /// Mode for timed reading
     /// </summary>
     public enum ReadingMode
     {
@@ -15,7 +15,6 @@ namespace Rca.EzoDeviceLib.Objects
         /// Continuous timed reading
         /// </summary>
         Continuous,
-
         /// <summary>
         /// Manual reading
         /// </summary>
