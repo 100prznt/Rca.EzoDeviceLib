@@ -38,7 +38,9 @@ namespace Rca.EzoDeviceLib
 
         #region Properties
         /// <summary>
+        /// I2C connection settings for the EZO™ device
         /// </summary>
+        public I2cConnectionSettings Settings { get; private set; }
 
         /// <summary>
         /// LED control
@@ -68,7 +70,6 @@ namespace Rca.EzoDeviceLib
         /// </summary>
         public abstract MeasDataInfo ValueInfo { get; }
 
-        private I2cConnectionSettings Settings { get; }
 
         private readonly string deviceSelector;
 
