@@ -43,6 +43,11 @@ var myEzoPhSensor = new PhSensor(0x1A) //set specific I2C address (0x1A) of conn
 };
 ```
 
+Or create an instance with timed (1 sec. in this case) firing event.
+```cs
+Public static myEzoRTD_Sensor = new EzoRtd(0x66, new TimeSpan(0, 0, 1), Rca.EzoDeviceLib.Objects.ReadingMode.Continuous);
+```
+
 	
 ### Perform and read measurement
 ```cs
@@ -54,6 +59,15 @@ With tempreature compensation:
 ```cs
 double temperature = 23.5; //temperature in °C
 double phCompensated = myEzoPhSensor.GetMeasValue(temperature);
+```
+
+Subscribe to timed event, if your event is firing from backgroundTask you can access it from anyware.
+```cs
+myEzoPhSensor.ValueChanged += TempIn_ValueChanged;
+```
+Dont forget to unsubscribe
+```cs
+myEzoPhSensor.ValueChanged -= TempIn_ValueChanged;
 ```
 
 
