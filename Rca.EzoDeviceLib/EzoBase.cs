@@ -77,11 +77,12 @@ namespace Rca.EzoDeviceLib
 
         #region Constructor + Init
         /// <summary>
-        /// Constructor requires a single byte 'SlaveAddress' as an argument.
-        /// The typical SlaveAddress for the EZO devices you can find in datasheet.
         /// Constructing this object will initialize it and prepare it for data retrieval.
         /// </summary>
-        public EzoBase(int slaveAddress, I2cBusSpeed busSpeed = I2cBusSpeed.FastMode, I2cSharingMode sharingMode = I2cSharingMode.Shared)
+        /// <param name="slaveAddress">I2C address of the EZO™ device</param>
+        /// <param name="busSpeed">I2C bus speed (default: StandardMode</param>
+        /// <param name="sharingMode">I2C sharing mode (default: Exclusive)</param>
+        public EzoBase(int slaveAddress, I2cBusSpeed busSpeed = I2cBusSpeed.StandardMode, I2cSharingMode sharingMode = I2cSharingMode.Exclusive)
         {
             Settings = new I2cConnectionSettings(slaveAddress)
             {
