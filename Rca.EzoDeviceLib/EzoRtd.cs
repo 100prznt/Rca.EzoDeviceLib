@@ -38,7 +38,6 @@ namespace Rca.EzoDeviceLib
             set => SetTemperatureScale(value);
         }
 
-
         /// <summary>
         /// Additional information about the measured value
         /// </summary>
@@ -50,48 +49,31 @@ namespace Rca.EzoDeviceLib
                 return new MeasDataInfo("Temperature", scale.GetName(), scale.GetSymbol());
             }
         }
+
+        /// <summary>
+        /// RaiseEventsOnUIThread
+        /// </summary>
+        public bool RaiseEventsOnUIThread { get; set; } = true;
+
         #endregion Properties
 
         #region Constructor - Init
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="slaveAddress"></param>
-        /// <param name="readInterval"></param>
-        /// <param name="modeR"> Automatic(timed) / Manual </param>
-        public EzoRtd(byte slaveAddress, TimeSpan readInterval, ReadingMode modeR)
-            : base(slaveAddress, readInterval, modeR)
+
+        public EzoRtd(byte slaveAddress)
+            : base(slaveAddress, new TimeSpan(), ReadingMode.Manual)
         { }
 
         /// <summary>
-        /// OverRide and Initialize Timer in EzoTimedBase
+        /// Initializes a new EzoRtd object using the continuous reading mode.
         /// </summary>
-        /// <returns></returns>
-        protected override Task InitializeSensorAsync()
-        {
-            base.InitializeTimer();
-
-            return Task.FromResult<object>(null);
-        }
+        /// <param name="slaveAddress">I2C address of the EZO™ RTD Circuit</param>
+        /// <param name="readInterval">interval for continuous reading</param>
+        /// <param name="modeR">Reading mode (default: Continuous)</param>
+        public EzoRtd(byte slaveAddress, TimeSpan readInterval, ReadingMode modeR = ReadingMode.Continuous)
+            : base(slaveAddress, readInterval, modeR)
+        { }
 
         #endregion Constructor
-
-        public bool RaiseEventsOnUIThread { get; set; } = true;
-
-        public event EventHandler<EzoRTD_EventArgs> ValueChanged;
-
-        /// <summary>
-        /// On Timer Tick 
-        /// </summary>
-        protected override void OnTimerAsync()
-        {
-            // Read temperature value.
-            var temperature = GetMeasValue().Result;
-
-            // Fire ValueChanged Event
-            RaiseEventHelper.CheckRaiseEventOnUIThread(this, ValueChanged, new EzoRTD_EventArgs(temperature), RaiseEventsOnUIThread);
-        }
-
 
         #region Services
         /// <summary>
@@ -234,6 +216,16 @@ namespace Rca.EzoDeviceLib
         #endregion Services
 
         #region Internal services
+        /// <summary>
+        /// Override and initialize timer in EzoTimedBase
+        /// </summary>
+        /// <returns></returns>
+        protected override Task InitializeSensorAsync()
+        {
+            base.InitializeTimer();
+
+            return Task.FromResult<object>(null);
+        }
 
         private void SetTemperatureScale(TemperatureScales scale)
         {
@@ -267,6 +259,26 @@ namespace Rca.EzoDeviceLib
                 throw new EzoResponseException(response.Code);
         }
 
+        /// <summary>
+        /// On Timer Tick 
+        /// </summary>
+        protected override void OnTimerAsync()
+        {
+            // Read temperature value.
+            var temperature = GetMeasValue().Result;
+
+            // Fire ValueChanged Event
+            RaiseEventHelper.CheckRaiseEventOnUIThread(this, ValueChanged, new EzoRTD_EventArgs(temperature), RaiseEventsOnUIThread);
+        }
+
         #endregion Internal services
+
+        #region Events
+        /// <summary>
+        /// Value has changed event
+        /// </summary>
+        public event EventHandler<EzoRTD_EventArgs> ValueChanged;
+
+        #endregion Events
     }
 }
