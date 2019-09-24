@@ -20,7 +20,11 @@ namespace Rca.EzoDeviceLib
     public class EzoRtd : EzoTimedBase
     {
         #region Constants
-        //public const int DEFAULT_ADDRESS = 0x66; //RTD EZO
+        /// <summary>
+        /// Factory I2C adress of the EZO™ RTD Circuit
+        /// </summary>
+        /// <remarks>Can be used to prefill setting files.</remarks>
+        public const int DEFAULT_ADDRESS = 0x66;
 
         #endregion Constants
 
