@@ -39,7 +39,7 @@ await myEzoPhSensor.InitSensorAsync();
 Or create an instance with custom parameters:
 ```cs
 var myEzoPhSensor = new PhSensor(0x1A, I2cBusSpeed.FastMode) //set specific I2C address (0x1A) and bus speed
-awaitmyEzoPhSensor.InitSensorAsync();
+await myEzoPhSensor.InitSensorAsync();
 ```
 
 Or create an instance with timed (1 sec. in this case) firing event.
