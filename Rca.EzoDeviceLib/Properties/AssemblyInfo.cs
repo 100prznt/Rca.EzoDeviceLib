@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RC-Art Solutions")]
 [assembly: AssemblyProduct("EzoDeviceLib")]
-[assembly: AssemblyCopyright("Copyright © RC-Art Solutions 2019")]
+[assembly: AssemblyCopyright("Copyright © RC-Art Solutions 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
